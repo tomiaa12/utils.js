@@ -1,6 +1,6 @@
 {
   "name": "@tomiaa/utils",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "description": "这里是 js 工具库~",
   "main": "lib/index.js",

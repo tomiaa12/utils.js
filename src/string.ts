@@ -59,7 +59,7 @@ export const camelToKebab = (str: string): string =>
 export const pathToFileType = (path: string) => {
   const arr = path.split(".")
   const extension =
-    arr.length > 1 && /^[a-zA-Z]+$/.test(arr.at(-1) || "") && arr.at(-1)
+    arr.length > 1 && /^[a-zA-Z0-9]+$/.test(arr.at(-1) || "") && arr.at(-1)
   const name = path.match(new RegExp(`[^/]+(?=.${extension}$)`))?.[0]
   return {
     name,
