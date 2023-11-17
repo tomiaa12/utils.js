@@ -106,3 +106,81 @@ export const getI18nKey = (str = ""): string | undefined => {
     return key.replace(/(^'|^"|'$|"$)/g, "")
   }
 }
+
+/**
+ * base64 编码
+ * 输入: "12" 输出: MTI=
+ */
+export const base64Encode = (str: string) => {
+  try {
+    return Promise.resolve(btoa(unescape(encodeURIComponent(str))))
+  } catch {
+    return Promise.reject()
+  }
+}
+
+/**
+ * base64 解码
+ * 输入: "MTI=" 输出: 12
+ */
+export const base64Decode = (utf8str: string) => {
+  try {
+    return Promise.resolve(decodeURIComponent(escape(atob(utf8str))))
+  } catch {
+    return Promise.reject()
+  }
+}
+
+/**
+ * 文件转 base64 编码
+ * 输入: 任意文件 输出: base64 字符串
+ */
+export const file2Base64 = (file: File) =>
+  new Promise(resolve => {
+    const reader = new FileReader()
+    reader.onload = function (e) {
+      // e.target.result就是该文件的完整Base64 Data-URI
+      resolve(e.target?.result)
+    }
+    reader.readAsDataURL(file)
+  })
+
+/**
+ * base64 编码转文件保存
+ * 输入: base64字符，文件名 输出: 保存文件
+ */
+export const saveBase64ToFile = (base64Data: string, fileName: string) => {
+  const base64 = base64Data.split(",")
+  const byteCharacters = atob(base64[base64.length - 1])
+
+  const byteNumbers = new Array(byteCharacters.length)
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i)
+  }
+  const byteArray = new Uint8Array(byteNumbers)
+
+  let fileType
+  try {
+    fileType = base64[0].split(":")[1].split(";")[0]
+  } catch {}
+
+  const blob = new Blob([byteArray], { type: fileType })
+
+  // 创建一个链接并下载
+  const link = document.createElement("a")
+  link.href = URL.createObjectURL(blob)
+  link.download = fileName
+  link.click()
+}
+
+/**
+ * 获取文件类型 base64 编码的 mimetype 值
+ * 输入: base64字符文件编码 输出: mimetype
+ */
+export const getBase64MimeType = (base64Data: string) => {
+  try {
+    return base64Data.split(",")[0].split(":")[1].split(";")[0]
+  } catch {
+    return
+  }
+}

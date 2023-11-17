@@ -1,9 +1,18 @@
-## [0.1.8](https://github.com/tomiaa12/utils.js/compare/0.1.7...0.1.8) (2023-04-07)
+# [更新日志](https://github.com/tomiaa12/utils.js/compare/0.1.8...更新日志) (2023-11-17)
+
+
+
+## [0.1.8](https://github.com/tomiaa12/utils.js/compare/0.1.7...0.1.8) (2023-11-17)
+
+
+### ✨ 新功能
+
+* 新增 mimeToExt base64转换等方法<sub>2023-11-17</sub> ([77c8cf5](https://github.com/tomiaa12/utils.js/commit/77c8cf5e6b6ed6e3ad6fdec5cf10c452a78ec902))
 
 
 ### 🐛 Bug 修复
 
-* pathToFileType 没有识别带数字的后缀<sub>2023-04-07</sub> ([311a96a](https://github.com/tomiaa12/utils.js/commit/311a96a87b99258d038df7800e714461a645bb25))
+* pathToFileType 没有识别带数字的后缀<sub>2023-04-07</sub> ([73c9884](https://github.com/tomiaa12/utils.js/commit/73c9884f4d6d464a0ea927eb7c096594a3bacf22))
 
 
 
